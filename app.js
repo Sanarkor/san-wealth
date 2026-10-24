@@ -26,12 +26,14 @@ const CG_MAP={BTC:'bitcoin',ETH:'ethereum',DOGE:'dogecoin',SOL:'solana',HYPE:'hy
   ATOM:'cosmos',NEAR:'near',ARB:'arbitrum',OP:'optimism',APT:'aptos',XLM:'stellar',BCH:'bitcoin-cash',UNI:'uniswap',WIF:'dogwifcoin',BONK:'bonk',
   JUP:'jupiter-exchange-solana',TIA:'celestia',INJ:'injective-protocol',RENDER:'render-token',FET:'fetch-ai',KAS:'kaspa',ETC:'ethereum-classic'};
 const CURS=['EUR','USD','GBP','CHF','CAD','JPY'];
+const MAIN_CURS=['EUR','USD','GBP','CHF'];
+function curOf(c){c=String(c||'EUR').toUpperCase();return MAIN_CURS.includes(c)?c:'EUR';}
 
 /* ---------- state ---------- */
 // legacy (v1) savings sections -> merged 'savings' (v2)
 const LEGACY_SAV=[['savRev','',true],['savLbp','La Banque Postale',true],['spouse','Ma femme',false],['kids','Enfant',false]];
 function blank(secs){secs=cloneSecs(secs||DEF_SECTIONS);const b={v:3,demo:false,sections:secs,cash:{},recurring:[],recHistory:[],
-  settings:{provider:'none',apiKey:'',masked:false,collapsed:{}},fx:{rates:{EUR:1},at:0,src:''},cryptoAt:0,stocksAt:0};
+  settings:{provider:'none',apiKey:'',masked:false,collapsed:{},mainCur:'EUR'},fx:{rates:{EUR:1},at:0,src:''},cryptoAt:0,stocksAt:0};
   for(const s of secs){b[s.k]=[];if(s.type!=='sav')b.cash[s.k]={amount:0,cur:'EUR'};}return b;}
 // ?vue = read-only view: data comes from the public data.json only, kept in memory, never written to localStorage
 const VIEW=new URLSearchParams(location.search).has('vue');
@@ -55,6 +57,7 @@ function normalize(d){
   b.demo=!!d.demo;
   if(d.settings&&typeof d.settings==='object')Object.assign(b.settings,d.settings);
   if(!b.settings.collapsed||typeof b.settings.collapsed!=='object')b.settings.collapsed={};
+  b.settings.mainCur=curOf(b.settings.mainCur);
   if(d.fx&&d.fx.rates)b.fx=d.fx;
   b.cryptoAt=+d.cryptoAt||0;b.stocksAt=+d.stocksAt||0;
   b.updatedAt=+d.updatedAt||0;b.cloudAt=+d.cloudAt||0;
@@ -69,12 +72,14 @@ function uid(){return Math.random().toString(36).slice(2,10)+Date.now().toString
 const $=s=>document.querySelector(s);
 const num=v=>{if(v===null||v===undefined||v==='')return NaN;const n=typeof v==='number'?v:parseFloat(String(v).replace(/\s/g,'').replace(',','.'));return isFinite(n)?n:NaN;};
 const fEUR=new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'});
-function eur(n){return isFinite(n)?fEUR.format(n):'—';}
+function baseCur(){return curOf(S&&S.settings&&S.settings.mainCur);}
+function toBase(n){if(!isFinite(n))return NaN;const b=baseCur();if(b==='EUR')return n;const r=fx(b);return isFinite(r)&&r>0?n/r:NaN;}
+function eur(n){if(!isFinite(n))return '—';const b=baseCur();if(b==='EUR')return fEUR.format(n);const v=toBase(n);return isFinite(v)?money(v,b):'—';}
 function money(n,c){if(!isFinite(n))return '—';const a=Math.abs(n);const d=a===0?2:a<0.01?6:a<1?4:2;
   try{return new Intl.NumberFormat('fr-FR',{style:'currency',currency:c||'EUR',minimumFractionDigits:2,maximumFractionDigits:d}).format(n);}catch(e){return n.toFixed(d)+' '+c;}}
 function qtyf(n){return isFinite(n)?new Intl.NumberFormat('fr-FR',{maximumFractionDigits:8}).format(n):'—';}
 function pct(n){return isFinite(n)?(n>=0?'+':'')+n.toFixed(2).replace('.',',')+' %':'';}
-function signed(n){return isFinite(n)?(n>=0?'+':'−')+fEUR.format(Math.abs(n)):'';}
+function signed(n){if(!isFinite(n))return '';const b=baseCur();const v=b==='EUR'?n:toBase(n);if(!isFinite(v))return '';const f=b==='EUR'?fEUR.format(Math.abs(v)):money(Math.abs(v),b);return (n>=0?'+':'−')+f;}
 function cls(n){return !isFinite(n)||Math.abs(n)<0.005?'mut':n>0?'pos':'neg';}
 function qtime(t){const d=new Date(t),n=new Date();const hm=d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
   return d.toDateString()===n.toDateString()?hm:d.toLocaleDateString('fr-FR',{weekday:'short',day:'2-digit',month:'2-digit'})+' '+hm;}
@@ -340,7 +345,7 @@ function commit(sec,id,fd,form){
 async function getJSON(url){const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),12000);
   try{const r=await fetch(url,{signal:ctl.signal,credentials:'omit',referrerPolicy:'no-referrer'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.json();}finally{clearTimeout(t);}}
 async function refreshFx(){
-  const need=new Set(['USD']);for(const l of stockLines())if(l.cur&&l.cur!=='EUR')need.add(l.cur.toUpperCase());for(const k in S.cash){const c=S.cash[k];if(c&&c.cur&&c.cur!=='EUR')need.add(c.cur);}
+  const need=new Set(['USD']);if(baseCur()!=='EUR')need.add(baseCur());for(const l of stockLines())if(l.cur&&l.cur!=='EUR')need.add(l.cur.toUpperCase());for(const k in S.cash){const c=S.cash[k];if(c&&c.cur&&c.cur!=='EUR')need.add(c.cur);}
   try{const d=await getJSON('https://api.frankfurter.dev/v1/latest?base=EUR&symbols='+[...need].join(','));
     const rates={EUR:1};for(const[c,r]of Object.entries(d.rates||{}))if(r>0)rates[c]=1/r;S.fx={rates,at:Date.now(),src:'frankfurter ('+d.date+')'};return true;}
   catch(e){try{const d=await getJSON('https://open.er-api.com/v6/latest/EUR');const rates={EUR:1};for(const c of need)if(d.rates&&d.rates[c]>0)rates[c]=1/d.rates[c];
@@ -608,9 +613,13 @@ function renderEnvList(){const box=$('#envList');if(!box)return;box.textContent=
       SECTIONS.splice(SECTIONS.indexOf(s),1);delete S[s.k];delete S.cash[s.k];S.recurring=S.recurring.filter(r=>r.sec!==s.k);touch();save();render();renderEnvList();}},'✕');
     const grp=el('input',{type:'text',value:s.group||'',maxlength:'60',list:'grpList',placeholder:'Groupe (facultatif)','aria-label':'Groupe',class:'env-grp',
       onchange:e=>{const g=e.target.value.trim();if(g)s.group=g.slice(0,60);else delete s.group;touch();save();render();renderEnvList();}});
-    box.appendChild(el('div',{class:'env-row'},el('span',{class:'dot'}),name,el('span',{class:'env-type',text:TYPES[s.type]}),el('span',{class:'env-mv'},up,down),del,grp));
-    box.lastChild.querySelector('.dot').style.background=s.color;});
+    const col=el('input',{type:'color',class:'env-color',value:hex6(s.color),'aria-label':'Couleur',
+      oninput:e=>{s.color=e.target.value;e.target.parentNode.style.background=e.target.value;render();},
+      onchange:e=>{s.color=e.target.value;e.target.parentNode.style.background=e.target.value;touch();save();render();}});
+    const sw=el('label',{class:'env-swatch',title:'Choisir la couleur'},col);sw.style.background=hex6(s.color);
+    box.appendChild(el('div',{class:'env-row'},sw,name,el('span',{class:'env-type',text:TYPES[s.type]}),el('span',{class:'env-mv'},up,down),del,grp));});
 }
+function hex6(c){c=String(c||'').trim();if(/^#[0-9a-fA-F]{6}$/.test(c))return c.toLowerCase();if(/^#[0-9a-fA-F]{3}$/.test(c))return '#'+[...c.slice(1)].map(x=>x+x).join('').toLowerCase();return '#94a3b8';}
 function addEnv(){const n=$('#envNewName').value.trim();const t=$('#envNewType').value;if(!n){toast('Donne un nom à l\'enveloppe');return;}
   let k;do{k='env_'+Math.random().toString(36).slice(2,8);}while(S[k]||RESERVED.has(k));
   const used=new Set(SECTIONS.map(s=>s.color));const color=PALETTE.find(c=>!used.has(c))||PALETTE[SECTIONS.length%PALETTE.length];
@@ -711,9 +720,16 @@ $('#btnTheme').onclick=()=>{const t=document.documentElement.dataset.theme==='li
 $('#btnMask').onclick=()=>{S.settings.masked=!S.settings.masked;save();render();};
 const dlg=$('#dlgSettings');
 function closeDlg(){if(!dlg.open)return;if(dlg.close)dlg.close();else{dlg.removeAttribute('open');dlg.dispatchEvent(new Event('close'));}}
-$('#btnSettings').onclick=()=>{renderEnvList();$('#setProvider').value=S.settings.provider||'none';$('#setKey').value=S.settings.apiKey||'';$('#setToken').value=localStorage.getItem(TOKEN_KEY)||'';$('#setName').value=S.settings.displayName||'';if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');};
+$('#btnSettings').onclick=()=>{renderEnvList();$('#setProvider').value=S.settings.provider||'none';$('#setKey').value=S.settings.apiKey||'';$('#setToken').value=localStorage.getItem(TOKEN_KEY)||'';$('#setName').value=S.settings.displayName||'';markMainCur();if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');};
 $('#btnPaste').onclick=()=>{const t=$('#pasteImport').value;if(!t.trim()){toast('Colle d\'abord le lien ou le JSON');return;}$('#pasteImport').value='';closeDlg();importFromText(t,false);};
 $('#btnCloseDlg').onclick=e=>{e.preventDefault();closeDlg();};
+{const x=$('#btnCloseTop');if(x)x.onclick=e=>{e.preventDefault();closeDlg();};}
+{const sj=$('#btnSaveJson');if(sj)sj.onclick=()=>saveOnline();}
+function markMainCur(){const c=baseCur();document.querySelectorAll('#mainCurPick .cur-opt').forEach(b=>b.classList.toggle('on',b.dataset.cur===c));}
+document.querySelectorAll('#mainCurPick .cur-opt').forEach(b=>b.addEventListener('click',async()=>{
+  const c=curOf(b.dataset.cur);if(S.settings.mainCur===c)return;
+  S.settings.mainCur=c;markMainCur();touch();save();render();
+  if(c!=='EUR'&&!isFinite(fx(c))){if(await refreshFx()){save();render();}}}));
 dlg.addEventListener('close',()=>{const tk=$('#setToken').value.trim();try{if(tk)localStorage.setItem(TOKEN_KEY,tk);else localStorage.removeItem(TOKEN_KEY);}catch(e){}
   const nm=$('#setName').value.trim().slice(0,40);if(nm!==(S.settings.displayName||'')){S.settings.displayName=nm;touch();}
   const p=$('#setProvider').value,k=$('#setKey').value.trim();const ch=p!==S.settings.provider||k!==S.settings.apiKey;
@@ -730,7 +746,7 @@ $('#btnReset').onclick=async()=>{closeDlg();if(!await ask('Effacer toutes les do
 $('#btnClearDemo').onclick=()=>{const st=S.settings;S=blank();SECTIONS=S.sections;S.settings.provider=st.provider;S.settings.apiKey=st.apiKey;save();render();};
 setTheme(document.documentElement.dataset.theme==='light'?'light':'dark');
 if(VIEW){document.body.classList.add('view');const rb=$('#roBadge');if(rb)rb.hidden=false;
-  for(const id of ['btnSettings','btnDemo','btnDemo2','btnClearDemo','btnReset','btnCloudSave','btnCloudLoad','btnImport','btnExport','btnPaste','btnEnvAdd']){const b=document.getElementById(id);if(b){b.onclick=null;b.disabled=true;}}
+  for(const id of ['btnSettings','btnSaveJson','btnDemo','btnDemo2','btnClearDemo','btnReset','btnCloudSave','btnCloudLoad','btnImport','btnExport','btnPaste','btnEnvAdd']){const b=document.getElementById(id);if(b){b.onclick=null;b.disabled=true;}}
   render();
   fetchRemote(false).then(d=>{if(!d){toast('Données en ligne indisponibles',5000);return;}
     S=normalize(d);SECTIONS=S.sections;S.settings.collapsed={};S.settings.masked=false;

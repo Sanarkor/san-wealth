@@ -345,3 +345,19 @@ html,body{font-family:"Inter var",Inter,-apple-system,BlinkMacSystemFont,"SF Pro
 @keyframes totGlow{from{filter:drop-shadow(0 0 5px var(--tgA)) drop-shadow(0 0 16px var(--tgA2))}to{filter:drop-shadow(0 0 5px var(--tgB)) drop-shadow(0 0 18px var(--tgB2))}}
 @media (prefers-reduced-motion:reduce){.total{animation:none;background-position:50% 50%;filter:drop-shadow(0 0 6px var(--tgA))}}
 body.masked .total{animation:none;filter:blur(9px)}
+/* ---- ported from sanwealth: settings folds, close button, main currency, colour swatches ---- */
+.dlg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:2;background:var(--bg2);padding:2px 0 6px}
+.dlg-head h2{margin:0}
+.dlg-x{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--txt);cursor:pointer;font-size:18px;line-height:1;padding:0}
+.fold{border:0;padding:0;margin:0;border-top:1px solid var(--hair);padding-top:4px}
+.fold summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--acc);margin:10px 0 0}
+.fold summary:focus{outline:none}
+.fold > :not(summary){margin-top:10px}
+.cur-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.cur-opt{padding:10px 4px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--txt);cursor:pointer;font:inherit;font-weight:600}
+.cur-opt.on{border-color:var(--acc2);box-shadow:0 0 0 1px var(--acc2);color:var(--acc2)}
+.env-row{grid-template-columns:28px minmax(0,1fr) auto auto auto}
+.env-swatch{position:relative;width:28px;height:28px;border-radius:50%;display:block;cursor:pointer;box-shadow:inset 0 0 0 1px #ffffff66,0 0 0 1px #0008}
+.env-row input.env-color{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;cursor:pointer}
+@media (max-width:520px){.env-row{grid-template-columns:28px minmax(0,1fr) auto auto}.env-row .env-swatch{grid-row:1}}
+body.view #btnSaveJson{display:none}
