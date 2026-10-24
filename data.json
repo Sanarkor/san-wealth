@@ -1,1 +1,366 @@
-{"v":1,"enc":"A256GCM","kdf":"PBKDF2-SHA256","iter":250000,"salt":"W2K4aTtn/WkWVEzO0zzBCQ==","iv":"zJPyTdQmcj4+qCul","ct":"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","app":"pf-dash"}
+{
+ "v": 3,
+ "demo": false,
+ "sections": [
+  {
+   "k": "pea",
+   "name": "PEA",
+   "type": "sec",
+   "color": "#34d399",
+   "group": "Investissement / Bourse"
+  },
+  {
+   "k": "cto",
+   "name": "CTO",
+   "type": "sec",
+   "color": "#60a5fa",
+   "group": "Investissement / Bourse"
+  },
+  {
+   "k": "savings",
+   "name": "Épargne",
+   "type": "sav",
+   "color": "#fbbf24"
+  },
+  {
+   "k": "crypto",
+   "name": "Crypto",
+   "type": "cry",
+   "color": "#f472b6"
+  }
+ ],
+ "cash": {
+  "pea": {
+   "amount": 28.64,
+   "cur": "EUR"
+  },
+  "cto": {
+   "amount": 188.38,
+   "cur": "USD"
+  },
+  "crypto": {
+   "amount": 28.06,
+   "cur": "EUR"
+  }
+ },
+ "recurring": [],
+ "recHistory": [],
+ "settings": {
+  "provider": "twelvedata",
+  "displayName": "San"
+ },
+ "fx": {
+  "rates": {
+   "EUR": 1,
+   "USD": 0.8901548869503294
+  },
+  "at": 1792616279976,
+  "src": "frankfurter (2026-10-21)"
+ },
+ "cryptoAt": 1792616280071,
+ "stocksAt": 1792616279894,
+ "pea": [
+  {
+   "id": "cb68oojb5zg3",
+   "ticker": "STM",
+   "name": "STMicroelectronics",
+   "qty": 12,
+   "pru": 53.483,
+   "cur": "EUR",
+   "apiSym": "",
+   "price": 42.015,
+   "isin": "NL0000226223",
+   "mkt": "_PAR",
+   "src": "auto",
+   "ovType": "STOCK",
+   "chg": 2.463114,
+   "priceAt": 1792616279996,
+   "priceSrc": "auto",
+   "via": "onvista Paris",
+   "autoFail": false,
+   "quoteAt": 1792598100003
+  },
+  {
+   "id": "82jysi2r36hu",
+   "ticker": "DCAM",
+   "name": "Amundi PEA Monde (MSCI World)",
+   "qty": 230,
+   "pru": 6.083,
+   "cur": "EUR",
+   "apiSym": "",
+   "price": 6.367,
+   "isin": "FR001400U5Q4",
+   "mkt": "_PAR",
+   "src": "auto",
+   "ovType": "FUND",
+   "chg": 0.616308,
+   "priceAt": 1792616280008,
+   "priceSrc": "auto",
+   "via": "onvista Paris",
+   "autoFail": false,
+   "quoteAt": 1792598100016
+  },
+  {
+   "id": "e34mnh3cgjd7",
+   "ticker": "PAASI",
+   "name": "Amundi PEA Asie Émergente",
+   "qty": 21,
+   "pru": 39.696,
+   "cur": "EUR",
+   "apiSym": "",
+   "price": 37.96,
+   "isin": "FR0013412012",
+   "mkt": "_PAR",
+   "src": "auto",
+   "ovType": "FUND",
+   "chg": 0.689655,
+   "priceAt": 1792616280007,
+   "priceSrc": "auto",
+   "via": "onvista Paris",
+   "autoFail": false,
+   "quoteAt": 1792598100019
+  },
+  {
+   "id": "hqha0ld2otsa",
+   "ticker": "CW8",
+   "name": "Amundi MSCI World Swap",
+   "qty": 1,
+   "pru": 677.56,
+   "cur": "EUR",
+   "apiSym": "",
+   "price": 713.19,
+   "isin": "LU1681043599",
+   "mkt": "_PAR",
+   "src": "auto",
+   "ovType": "FUND",
+   "chg": 0.544175,
+   "priceAt": 1792616280008,
+   "priceSrc": "auto",
+   "via": "onvista Paris",
+   "autoFail": false,
+   "quoteAt": 1792598100018
+  },
+  {
+   "id": "qlqcpdfr69nf",
+   "ticker": "PUST",
+   "name": "Amundi PEA Nasdaq-100",
+   "qty": 4,
+   "pru": 105.028,
+   "cur": "EUR",
+   "apiSym": "",
+   "price": 106.58,
+   "isin": "FR0011871110",
+   "mkt": "_PAR",
+   "src": "auto",
+   "ovType": "FUND",
+   "chg": 1.004549,
+   "priceAt": 1792616280035,
+   "priceSrc": "auto",
+   "via": "onvista Paris",
+   "autoFail": false,
+   "quoteAt": 1792598100018
+  }
+ ],
+ "cto": [
+  {
+   "id": "7weajvf97m5k",
+   "ticker": "IONQ",
+   "name": "IonQ",
+   "qty": 15,
+   "pru": 36.49,
+   "cur": "USD",
+   "apiSym": "IONQ",
+   "price": 32.28,
+   "isin": "US46222L1089",
+   "mkt": "_NYS",
+   "src": "auto",
+   "ovType": "STOCK",
+   "chg": 3.262956,
+   "priceAt": 1792616280169,
+   "priceSrc": "auto",
+   "via": "onvista NYSE",
+   "autoFail": false,
+   "quoteAt": 1792612803066
+  },
+  {
+   "id": "rxr69867za4u",
+   "ticker": "SPCX",
+   "name": "SpaceX",
+   "qty": 3,
+   "pru": 154.81,
+   "cur": "USD",
+   "apiSym": "SPCX",
+   "price": 159.28,
+   "isin": "US84615Q1031",
+   "mkt": "_NMS",
+   "src": "auto",
+   "ovType": "STOCK",
+   "chg": 7.77455,
+   "priceAt": 1792616279894,
+   "priceSrc": "auto",
+   "via": "Twelve Data",
+   "autoFail": false,
+   "quoteAt": 1792612740000
+  }
+ ],
+ "savings": [
+  {
+   "id": "e75394367192",
+   "label": "Livret A",
+   "inst": "La Banque Postale",
+   "amount": 25000,
+   "rate": 1.7,
+   "note": "Plafond atteint, intérêts compensés",
+   "capped": true,
+   "inTotal": true,
+   "third": false,
+   "holder": ""
+  },
+  {
+   "id": "fb72d01cd0c6",
+   "label": "LDDS",
+   "inst": "La Banque Postale",
+   "amount": 12900,
+   "rate": 1.7,
+   "note": "",
+   "capped": true,
+   "inTotal": true,
+   "third": false,
+   "holder": ""
+  },
+  {
+   "id": "63a615851b95",
+   "label": "Épargne Revolut",
+   "inst": "Revolut",
+   "amount": 1538,
+   "rate": 1,
+   "note": "",
+   "capped": false,
+   "inTotal": true,
+   "third": false,
+   "holder": ""
+  },
+  {
+   "id": "8a4b084d2066",
+   "label": "LEP Drogo",
+   "inst": "Banque Populaire",
+   "amount": 9000,
+   "rate": null,
+   "note": "",
+   "capped": false,
+   "inTotal": false,
+   "third": true,
+   "holder": "San Wife"
+  },
+  {
+   "id": "a5130a3ea73f",
+   "label": "Capy",
+   "inst": "Capy",
+   "amount": 3190.06,
+   "rate": null,
+   "note": "",
+   "capped": false,
+   "inTotal": false,
+   "third": true,
+   "holder": "Capy"
+  },
+  {
+   "id": "2dd092451dc8",
+   "label": "Chèvra",
+   "inst": "Chèvra",
+   "amount": 2487.36,
+   "rate": null,
+   "note": "",
+   "capped": false,
+   "inTotal": false,
+   "third": true,
+   "holder": "Chèvra"
+  }
+ ],
+ "crypto": [
+  {
+   "id": "2bz82qbhx5uf",
+   "sym": "BTC",
+   "qty": 0.02726735,
+   "pru": 64706.2,
+   "cgId": "bitcoin",
+   "price": 75361,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "i0i8wnan7qe1",
+   "sym": "ETH",
+   "qty": 0.34031479,
+   "pru": 1825.78,
+   "cgId": "ethereum",
+   "price": 2217.91,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "ezbdigdc61wn",
+   "sym": "DOGE",
+   "qty": 2139.8918,
+   "pru": 0.07773,
+   "cgId": "dogecoin",
+   "price": 0.073847,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "5f56ekyst60c",
+   "sym": "SOL",
+   "qty": 1.746454,
+   "pru": 80.73,
+   "cgId": "solana",
+   "price": 96.2,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "qjtykly7vnma",
+   "sym": "HYPE",
+   "qty": 0.96654671,
+   "pru": 64.69,
+   "cgId": "hyperliquid",
+   "price": 72.33,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "xfvvvlwyhi8t",
+   "sym": "ZRO",
+   "qty": 16.21168,
+   "pru": 2.1253,
+   "cgId": "layerzero",
+   "price": 1.78,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto",
+   "chg": null
+  },
+  {
+   "id": "unh3p4wznwtz",
+   "sym": "TON",
+   "qty": 8.76254219,
+   "pru": 1.3694,
+   "cgId": "the-open-network",
+   "price": 1.2,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  },
+  {
+   "id": "cok17kr925mp",
+   "sym": "DOGS",
+   "qty": 209970,
+   "pru": 0.0000413665,
+   "cgId": "dogs-2",
+   "price": 0.00003612,
+   "priceAt": 1792616280071,
+   "priceSrc": "auto"
+  }
+ ],
+ "updatedAt": 1792616296461,
+ "app": "pf-dash",
+ "savedAt": "2026-10-21T20:58:16.461Z"
+}
