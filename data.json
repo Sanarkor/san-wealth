@@ -1,366 +1,106 @@
 {
  "v": 3,
- "demo": false,
+ "demo": true,
  "sections": [
   {
    "k": "pea",
    "name": "PEA",
    "type": "sec",
-   "color": "#34d399",
+   "color": "#60a5fa",
    "group": "Investissement / Bourse"
   },
   {
    "k": "cto",
    "name": "CTO",
    "type": "sec",
-   "color": "#60a5fa",
+   "color": "#7c3aed",
    "group": "Investissement / Bourse"
   },
   {
    "k": "savings",
    "name": "Épargne",
    "type": "sav",
-   "color": "#fbbf24"
+   "color": "#22c55e"
   },
   {
    "k": "crypto",
    "name": "Crypto",
    "type": "cry",
-   "color": "#f472b6"
+   "color": "#f7931a"
   }
  ],
  "cash": {
   "pea": {
-   "amount": 28.64,
+   "amount": 100,
    "cur": "EUR"
   },
   "cto": {
-   "amount": 188.38,
+   "amount": 50,
    "cur": "USD"
   },
   "crypto": {
-   "amount": 28.06,
+   "amount": 20,
    "cur": "EUR"
   }
  },
  "recurring": [],
  "recHistory": [],
  "settings": {
-  "provider": "twelvedata",
-  "displayName": "San"
+  "provider": "none",
+  "displayName": "Démo"
  },
  "fx": {
   "rates": {
-   "EUR": 1,
-   "USD": 0.893415527561869
+   "EUR": 1
   },
-  "at": 1792876510054,
-  "src": "frankfurter (2026-10-23)"
+  "at": 0,
+  "src": ""
  },
- "cryptoAt": 1792876510066,
- "stocksAt": 1792876510050,
+ "cryptoAt": 0,
+ "stocksAt": 0,
+ "updatedAt": 0,
+ "cloudAt": 0,
  "pea": [
   {
-   "id": "cb68oojb5zg3",
-   "ticker": "STM",
-   "name": "STMicroelectronics",
-   "qty": 12,
-   "pru": 53.483,
+   "id": "demo-pea",
+   "ticker": "DEMO",
+   "name": "Démo ETF Monde",
+   "qty": 10,
+   "pru": 100,
    "cur": "EUR",
-   "apiSym": "",
-   "price": 39.465,
-   "isin": "NL0000226223",
-   "mkt": "_PAR",
-   "src": "auto",
-   "ovType": "STOCK",
-   "chg": -1.238739,
-   "priceAt": 1792876510054,
-   "priceSrc": "auto",
-   "via": "onvista Paris",
-   "autoFail": false,
-   "quoteAt": 1792770900007
-  },
-  {
-   "id": "82jysi2r36hu",
-   "ticker": "DCAM",
-   "name": "Amundi PEA Monde (MSCI World)",
-   "qty": 230,
-   "pru": 6.083,
-   "cur": "EUR",
-   "apiSym": "",
-   "price": 6.301,
-   "isin": "FR001400U5Q4",
-   "mkt": "_PAR",
-   "src": "auto",
-   "ovType": "FUND",
-   "chg": 0,
-   "priceAt": 1792876510054,
-   "priceSrc": "auto",
-   "via": "onvista Paris",
-   "autoFail": false,
-   "quoteAt": 1792770900010
-  },
-  {
-   "id": "e34mnh3cgjd7",
-   "ticker": "PAASI",
-   "name": "Amundi PEA Asie Émergente",
-   "qty": 21,
-   "pru": 39.696,
-   "cur": "EUR",
-   "apiSym": "",
-   "price": 37.065,
-   "isin": "FR0013412012",
-   "mkt": "_PAR",
-   "src": "auto",
-   "ovType": "FUND",
-   "chg": 0.447154,
-   "priceAt": 1792876510055,
-   "priceSrc": "auto",
-   "via": "onvista Paris",
-   "autoFail": false,
-   "quoteAt": 1792770900013
-  },
-  {
-   "id": "hqha0ld2otsa",
-   "ticker": "CW8",
-   "name": "Amundi MSCI World Swap",
-   "qty": 1,
-   "pru": 677.56,
-   "cur": "EUR",
-   "apiSym": "",
-   "price": 706.01,
-   "isin": "LU1681043599",
-   "mkt": "_PAR",
-   "src": "auto",
-   "ovType": "FUND",
-   "chg": -0.043889,
-   "priceAt": 1792876510055,
-   "priceSrc": "auto",
-   "via": "onvista Paris",
-   "autoFail": false,
-   "quoteAt": 1792770900012
-  },
-  {
-   "id": "qlqcpdfr69nf",
-   "ticker": "PUST",
-   "name": "Amundi PEA Nasdaq-100",
-   "qty": 4,
-   "pru": 105.028,
-   "cur": "EUR",
-   "apiSym": "",
-   "price": 104.34,
-   "isin": "FR0011871110",
-   "mkt": "_PAR",
-   "src": "auto",
-   "ovType": "FUND",
-   "chg": 0.057537,
-   "priceAt": 1792876510055,
-   "priceSrc": "auto",
-   "via": "onvista Paris",
-   "autoFail": false,
-   "quoteAt": 1792770900013
+   "price": 110,
+   "priceSrc": "manuel"
   }
  ],
  "cto": [
   {
-   "id": "7weajvf97m5k",
-   "ticker": "IONQ",
-   "name": "IonQ",
-   "qty": 15,
-   "pru": 36.49,
+   "id": "demo-cto",
+   "ticker": "DEMO-US",
+   "name": "Démo Tech US",
+   "qty": 2,
+   "pru": 100,
    "cur": "USD",
-   "apiSym": "IONQ",
-   "price": 31.27,
-   "isin": "US46222L1089",
-   "mkt": "_NYS",
-   "src": "auto",
-   "ovType": "STOCK",
-   "chg": 0.35301865,
-   "priceAt": 1792876383534,
-   "priceSrc": "auto",
-   "via": "Twelve Data",
-   "autoFail": false,
-   "quoteAt": 1792785540000
-  },
-  {
-   "id": "rxr69867za4u",
-   "ticker": "SPCX",
-   "name": "SpaceX",
-   "qty": 3,
-   "pru": 154.81,
-   "cur": "USD",
-   "apiSym": "SPCX",
-   "price": 147.49001,
-   "isin": "US84615Q1031",
-   "mkt": "_NMS",
-   "src": "auto",
-   "ovType": "STOCK",
-   "chg": 1.89292,
-   "priceAt": 1792876495859,
-   "priceSrc": "auto",
-   "via": "Twelve Data",
-   "autoFail": false,
-   "quoteAt": 1792785540000
+   "price": 120,
+   "priceSrc": "manuel"
   }
  ],
  "savings": [
   {
-   "id": "e75394367192",
-   "label": "Livret A",
-   "inst": "La Banque Postale",
-   "amount": 25000,
-   "rate": 1.7,
-   "note": "Plafond atteint, intérêts compensés",
-   "capped": true,
-   "inTotal": true,
-   "third": false,
-   "holder": ""
-  },
-  {
-   "id": "fb72d01cd0c6",
-   "label": "LDDS",
-   "inst": "La Banque Postale",
-   "amount": 12900,
-   "rate": 1.7,
-   "note": "",
-   "capped": true,
-   "inTotal": true,
-   "third": false,
-   "holder": ""
-  },
-  {
-   "id": "63a615851b95",
-   "label": "Épargne Revolut",
-   "inst": "Revolut",
-   "amount": 1538,
+   "id": "demo-livret",
+   "label": "Démo Livret",
+   "inst": "Banque Démo",
+   "amount": 1000,
    "rate": 1,
-   "note": "",
-   "capped": false,
-   "inTotal": true,
-   "third": false,
-   "holder": ""
-  },
-  {
-   "id": "8a4b084d2066",
-   "label": "LEP Drogo",
-   "inst": "Banque Populaire",
-   "amount": 9000,
-   "rate": null,
-   "note": "",
-   "capped": false,
-   "inTotal": false,
-   "third": true,
-   "holder": "San Wife"
-  },
-  {
-   "id": "a5130a3ea73f",
-   "label": "Capy",
-   "inst": "Capy",
-   "amount": 3190.06,
-   "rate": null,
-   "note": "",
-   "capped": false,
-   "inTotal": false,
-   "third": true,
-   "holder": "Capy"
-  },
-  {
-   "id": "2dd092451dc8",
-   "label": "Chèvra",
-   "inst": "Chèvra",
-   "amount": 2487.36,
-   "rate": null,
-   "note": "",
-   "capped": false,
-   "inTotal": false,
-   "third": true,
-   "holder": "Chèvra"
+   "inTotal": true
   }
  ],
  "crypto": [
   {
-   "id": "2bz82qbhx5uf",
+   "id": "demo-btc",
    "sym": "BTC",
-   "qty": 0.02726735,
-   "pru": 64706.2,
-   "cgId": "bitcoin",
-   "price": 71637,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "i0i8wnan7qe1",
-   "sym": "ETH",
-   "qty": 0.34031479,
-   "pru": 1825.78,
-   "cgId": "ethereum",
-   "price": 2083.06,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "ezbdigdc61wn",
-   "sym": "DOGE",
-   "qty": 2139.8918,
-   "pru": 0.07773,
-   "cgId": "dogecoin",
-   "price": 0.068679,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "5f56ekyst60c",
-   "sym": "SOL",
-   "qty": 1.746454,
-   "pru": 80.73,
-   "cgId": "solana",
-   "price": 90.26,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "qjtykly7vnma",
-   "sym": "HYPE",
-   "qty": 0.96654671,
-   "pru": 64.69,
-   "cgId": "hyperliquid",
-   "price": 67.87,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "xfvvvlwyhi8t",
-   "sym": "ZRO",
-   "qty": 16.21168,
-   "pru": 2.1253,
-   "cgId": "layerzero",
-   "price": 1.53,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto",
-   "chg": null
-  },
-  {
-   "id": "unh3p4wznwtz",
-   "sym": "TON",
-   "qty": 8.76254219,
-   "pru": 1.3694,
-   "cgId": "the-open-network",
-   "price": 1.11,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
-  },
-  {
-   "id": "cok17kr925mp",
-   "sym": "DOGS",
-   "qty": 209970,
-   "pru": 0.0000413665,
-   "cgId": "dogs-2",
-   "price": 0.00003175,
-   "priceAt": 1792876510066,
-   "priceSrc": "auto"
+   "qty": 0.01,
+   "pru": 20000,
+   "cgId": "bitcoin"
   }
- ],
- "updatedAt": 1792876528585,
- "app": "pf-dash",
- "savedAt": "2026-10-24T21:15:28.585Z"
+ ]
 }
